@@ -37,9 +37,9 @@
                         (assign count (+ count 1))
                     )
                 )
-                (console.log "final result:" count)
             )
     )
+    count
 )
 
 (var example-meetings
@@ -68,9 +68,9 @@
   {start 9, end 11}
   {start 10, end 10.5}])
 
- (minimum-rooms example-meetings)
- (minimum-rooms no-overlap-meetings)
- (minimum-rooms all-at-once)
- (minimum-rooms touch-meetings)
- (minimum-rooms nested-meetings)
+ (console.log (minimum-rooms example-meetings))
+ (console.log  (minimum-rooms no-overlap-meetings))
+ (console.log  (minimum-rooms all-at-once))
+ (console.log  (minimum-rooms touch-meetings))
+ (console.log  (minimum-rooms nested-meetings))
 
