@@ -1,7 +1,7 @@
 # sibilant_crossbeam
 Technical Exercise in Functional Programming Lisp-like project
 
-## Solution explanation
+## Reasoning progress explanation
 
 As I wanted to solve this exercise I ran into some troubles mostly because of the syntax of the language and the low amount of resources I could use (very basic tools)
 
@@ -16,6 +16,10 @@ Regarding Test 2 it was all ok too.
 When reaching Test 3 I was faced with wrong answer "2" rooms required instead of "3". I forgot about the "first" room required to have at least 1 meeting.
 
 I had to rethink the count of overlapping and add the edge case of "0" count to be incremented to "1".
+
+## Solution Explanation
+
+I went with a recursive testing each meeting against the other then cropping the first meeting in the array to recursively check it all without "doublons". It's really cool ! Then it was just a matter of incrementing and keeping the highest value met (highest number of concurrent room booked) and managing edge cases.
 
 ## Additional tests
 
