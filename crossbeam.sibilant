@@ -1,0 +1,76 @@
+(def is-overlap (a b)
+    (and (< a.start b.end) (< b.start a.end))
+)
+
+(def count-overlapping (meetings count)
+    (if (> (length meetings) 1)
+        (do
+            (var overlap 0)
+            (var meeting (first meetings))
+            (each item (rest meetings)
+                (if (is-overlap meeting item)
+                    (do
+                        (assign overlap (+ overlap 1))
+                    )
+                )
+            )
+            (if (> overlap count)
+                (do
+                    (assign count ( + overlap 1))
+                )
+            )
+            (count-overlapping (rest meetings) count)
+        )
+        count
+    )
+)
+
+
+(def minimum-rooms (meetings)
+    (var count 0)
+    (if
+        (array? meetings)
+            (do
+                (assign count (count-overlapping meetings count))
+                (if (= count 0)
+                    (do
+                        (assign count (+ count 1))
+                    )
+                )
+                (console.log "final result:" count)
+            )
+    )
+)
+
+(var example-meetings
+ [{start 9, end 10}
+ {start 10, end 11.5}
+ {start 9.5, end 11}
+ {start 11, end 12}])
+
+ (var no-overlap-meetings
+ [{start 8, end 9}
+ {start 9, end 10}
+ {start 10, end 11}])
+(var all-at-once
+ [{start 8, end 12}
+ {start 8, end 12}
+ {start 8, end 12}])
+
+ (var touch-meetings
+ [{start 8, end 9}
+  {start 9, end 10}
+  {start 10, end 11}
+  {start 11, end 12}])
+
+(var nested-meetings
+ [{start 8, end 12}
+  {start 9, end 11}
+  {start 10, end 10.5}])
+
+ (minimum-rooms example-meetings)
+ (minimum-rooms no-overlap-meetings)
+ (minimum-rooms all-at-once)
+ (minimum-rooms touch-meetings)
+ (minimum-rooms nested-meetings)
+
